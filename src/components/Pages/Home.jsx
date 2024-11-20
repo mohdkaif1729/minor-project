@@ -12,7 +12,7 @@ function Home() {
       heading: "Annual Conferences",
       paragraph:
         "Our Annual Conferences are expertly curated to provide you and your attendees with a truly unforgettable experience. We'll work with you to create a customized event that aligns perfectly with your organization's goals and objectives. From content to logistics,we'll handle everything with seamless execution.",
-      imagePath: "../../../public/annualConferences.jpg",
+      imagePath: "./annualConferences.jpg",
     },
     {
       sNo: "02",
