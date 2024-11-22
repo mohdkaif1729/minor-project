@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Input, Logo } from "../index.js";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import axios from "axios";
 
 function Signup() {
   const navigate = useNavigate();
@@ -11,14 +12,31 @@ function Signup() {
 
   const create = async (data) => {
     setError("");
+    console.log(data);
+
     try {
-      console.log(data);
-      if (data) {
-        navigate("/");
-      }
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/register", // Update URL as needed
+        {
+          fullName: data.fullName,
+          email: data.email,
+          password: data.password,
+        }
+      );
+      alert(response.data.message);
+      navigate("/");
     } catch (error) {
-      setError(error.message);
+      console.error(error);
+      setError(error.response?.data?.message || "Something went wrong");
     }
+    // try {
+    //   console.log(data);
+    //   if (data) {
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   setError(error.message);
+    // }
   };
 
   useEffect(() => {
@@ -55,7 +73,7 @@ function Signup() {
             <Input
               label="Full Name: "
               placeholder="Enter your full name"
-              {...register("name", {
+              {...register("fullName", {
                 required: true,
               })}
             />

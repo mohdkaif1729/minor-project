@@ -49,7 +49,12 @@ function Login() {
           </NavLink>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-        <form onSubmit={handleSubmit(login)} className="mt-8">
+        <form
+          method="POST"
+          action="/api/v1/users/login"
+          onSubmit={handleSubmit(login)}
+          className="mt-8"
+        >
           <div className="space-y-5">
             <Input
               label="Email: "

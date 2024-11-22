@@ -11,14 +11,16 @@ function Navbar() {
         </NavLink>
       </div>
 
-      <ul className="flex gap-8">
+      <ul className="hidden lg:flex gap-8">
         <li>
           <NavLink
             to="/"
             className={({ isActive }) =>
               ` ${
-                isActive && "bg-gray-600 px-2 py-1 rounded-md"
-              } text-white hover:underline text-lg`
+                isActive
+                  ? "bg-white text-black px-2 py-1 rounded-md"
+                  : "text-white"
+              }  hover:underline text-lg`
             }
           >
             Home
@@ -29,8 +31,10 @@ function Navbar() {
             to="about-us"
             className={({ isActive }) =>
               ` ${
-                isActive && "bg-gray-600 px-2 py-1 rounded-md"
-              } text-white  hover:underline text-lg`
+                isActive
+                  ? "bg-white text-black px-2 py-1 rounded-md"
+                  : "text-white"
+              }  hover:underline text-lg`
             }
           >
             About Us
@@ -41,8 +45,10 @@ function Navbar() {
             to="our-services"
             className={({ isActive }) =>
               ` ${
-                isActive && "bg-gray-600 px-2 py-1 rounded-md"
-              } text-white  hover:underline text-lg`
+                isActive
+                  ? "bg-white text-black px-2 py-1 rounded-md"
+                  : "text-white"
+              }  hover:underline text-lg`
             }
           >
             Our Services
@@ -53,8 +59,10 @@ function Navbar() {
             to="our-projects"
             className={({ isActive }) =>
               ` ${
-                isActive && "bg-gray-600 px-2 py-1 rounded-md"
-              } text-white  hover:underline text-lg`
+                isActive
+                  ? "bg-white text-black px-2 py-1 rounded-md"
+                  : "text-white"
+              }  hover:underline text-lg`
             }
           >
             Our Projects
@@ -65,15 +73,17 @@ function Navbar() {
             to="contact-us"
             className={({ isActive }) =>
               ` ${
-                isActive && "bg-gray-600 px-2 py-1 rounded-md"
-              } text-white  hover:underline text-lg`
+                isActive
+                  ? "bg-white text-black px-2 py-1 rounded-md"
+                  : "text-white"
+              }  hover:underline text-lg`
             }
           >
             Contact Us
           </NavLink>
         </li>
       </ul>
-      <div>
+      <div className="hidden lg:block">
         <NavLink
           to="login"
           className="text-white border-2 border-white px-2 py-1 rounded-md 
@@ -88,6 +98,9 @@ function Navbar() {
         >
           Sign Up
         </NavLink>
+      </div>
+      <div className="lg:hidden">
+        <button className="text-white text-5xl"> &#8801; </button>
       </div>
     </div>
   );
