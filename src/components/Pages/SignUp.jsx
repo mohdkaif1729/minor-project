@@ -20,7 +20,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "https://minor-project-backend-again.vercel.app/api/v1/users/register", // Update URL as needed
+        "https://minor-project-backend-hcd9.onrender.com/api/v1/users/register", // Update URL as needed
         {
           fullName: data.fullName,
           email: data.email,
