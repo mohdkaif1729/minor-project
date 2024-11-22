@@ -8,7 +8,11 @@ import axios from "axios";
 function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const create = async (data) => {
     setError("");
@@ -16,7 +20,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/register", // Update URL as needed
+        "https://minor-project-backend-again.vercel.app/api/v1/users/register", // Update URL as needed
         {
           fullName: data.fullName,
           email: data.email,
@@ -29,14 +33,6 @@ function Signup() {
       console.error(error);
       setError(error.response?.data?.message || "Something went wrong");
     }
-    // try {
-    //   console.log(data);
-    //   if (data) {
-    //     navigate("/");
-    //   }
-    // } catch (error) {
-    //   setError(error.message);
-    // }
   };
 
   useEffect(() => {
@@ -77,6 +73,9 @@ function Signup() {
                 required: true,
               })}
             />
+            {/* {errors.message && (
+              <p className="text-red-600">{errors.fullName.message}</p>
+            )} */}
             <Input
               label="Email: "
               placeholder="Enter your email"
@@ -90,6 +89,7 @@ function Signup() {
                 },
               })}
             />
+
             <Input
               label="Password: "
               type="password"
@@ -98,6 +98,9 @@ function Signup() {
                 required: true,
               })}
             />
+            {/* {errors.message && (
+              <p className="text-red-600">{errors.message.password}</p>
+            )} */}
             <Button type="submit" className="w-full">
               Create Account
             </Button>

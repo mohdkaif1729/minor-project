@@ -4,19 +4,41 @@ import Button from "../utils/Button.jsx";
 import Input from "../utils/Input.jsx";
 import Logo from "../utils/Logo.jsx";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useEffect } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login as authLogin } from "../../store/authSlice.js";
 
 function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
   const login = async (data) => {
     setError("");
+    console.log(data);
     try {
-      console.log(data);
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/login", // Update URL as needed
+        {
+          email: data.email,
+          password: data.password,
+        },
+        { withCredentials: true }
+      );
+      alert(response.data.message);
+      console.log(response);
+
+      if (response) {
+        dispatch(authLogin());
+        navigate("/");
+      }
     } catch (error) {
-      setError(error.message);
+      console.error(error);
+      setError(error.response?.data?.message || "Something went wrong");
     }
   };
 

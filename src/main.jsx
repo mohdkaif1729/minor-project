@@ -11,6 +11,8 @@ import {
 } from "./components/index.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUp from "./components/Pages/SignUp.jsx";
+import store from "./store/store.js";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -50,5 +52,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );

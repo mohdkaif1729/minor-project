@@ -19,6 +19,7 @@ import ContactUs from "./Pages/ContactUs.jsx";
 import OurServicesTop from "./OurServices/OurServicesTop.jsx";
 import Contact from "./ContactUs/Contact.jsx";
 import OurProjectsTop from "./OurProjects/OurProjectsTop.jsx";
+import LogoutBtn from "./Home/LogoutBtn.jsx";
 
 export {
   BgVideo,
@@ -42,4 +43,5 @@ export {
   OurServicesTop,
   Contact,
   OurProjectsTop,
+  LogoutBtn,
 };

@@ -1,8 +1,10 @@
 import React from "react";
-import { Logo } from "../index.js";
+import { Logo, LogoutBtn } from "../index.js";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const isUserLogedIn = useSelector((state) => state.auth.status);
   return (
     <div className="w-full bg-black h-20 flex items-center justify-between px-4 sticky top-0 z-10 shadow-sm shadow-white/35">
       <div>
@@ -84,20 +86,26 @@ function Navbar() {
         </li>
       </ul>
       <div className="hidden lg:block">
-        <NavLink
-          to="login"
-          className="text-white border-2 border-white px-2 py-1 rounded-md 
+        {isUserLogedIn ? (
+          <LogoutBtn />
+        ) : (
+          <div>
+            <NavLink
+              to="login"
+              className="text-white border-2 border-white px-2 py-1 rounded-md 
         font-semibold hover:text-black hover:bg-white "
-        >
-          Login
-        </NavLink>
-        <NavLink
-          to="sign-up"
-          className="ml-4 text-white border-2 border-white px-2 py-1 rounded-md 
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="sign-up"
+              className="ml-4 text-white border-2 border-white px-2 py-1 rounded-md 
         font-semibold  hover:text-black hover:bg-white"
-        >
-          Sign Up
-        </NavLink>
+            >
+              Sign Up
+            </NavLink>
+          </div>
+        )}
       </div>
       <div className="lg:hidden">
         <button className="text-white text-5xl"> &#8801; </button>
