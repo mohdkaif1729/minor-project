@@ -9,7 +9,7 @@ function About() {
   return (
     <div>
       <AboutTop />
-      <AboutBottom />
+      {/* <AboutBottom /> */}
     </div>
   );
 }

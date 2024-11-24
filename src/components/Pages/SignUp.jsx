@@ -20,7 +20,9 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "https://minor-project-backend-hcd9.onrender.com/api/v1/users/register", // Update URL as needed
+        // "https://minor-project-backend-hcd9.onrender.com/api/v1/users/register", // Update URL as needed
+        "http://localhost:8000/api/v1/users/register", // Update URL as needed
+
         {
           fullName: data.fullName,
           email: data.email,
