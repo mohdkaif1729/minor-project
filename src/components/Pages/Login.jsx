@@ -22,7 +22,7 @@ function Login() {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/login", // Update URL as needed
+        "https://minor-project-backend-hcd9.onrender.com/api/v1/users/login", // Update URL as needed
         {
           email: data.email,
           password: data.password,
